@@ -1,0 +1,212 @@
+<?php
+include("../../login_cek.php");
+include "../../dist/conn/server.php";
+date_default_timezone_set('Asia/Jakarta');
+$dncode   = $_GET['dncode'];
+$resdel   = mysql_query("select * from delivery where dn_code='$dncode'");
+$datadel  = mysql_fetch_array($resdel);
+$custcode  = $datadel['cust_code'];
+$rescust   = mysql_query("select * from customer where cust_code='$custcode'");
+$datacust  = mysql_fetch_array($rescust);
+$resprof   = mysql_query("select * from profile");
+$dataprof  = mysql_fetch_array($resprof);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="refresh" content="960">
+    <link rel="shortcut icon" href="../../dist/img/logo.png">
+
+    <title>grootech</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 4 -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Content Wrapper. Contains page content -->
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Main content -->
+                    <div class="invoice p-3 mb-3">
+                        <!-- title row -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h4>
+                                    <strong><?php echo $dataprof['name'] ?></strong>
+                                </h4>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- info row -->
+                        <div class="row invoice-info">
+                            <div class="col-sm-1 invoice-col">
+                                <address>
+                                    FACTORY :
+                                </address>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-7 invoice-col">
+                                <address>
+                                    <?php echo $dataprof['address1'] ?><br>
+                                    <?php echo $dataprof['address2'] ?><br>
+                                    Phone : &nbsp;<?php echo $dataprof['phone'] ?><br>
+                                    Fax : &nbsp;<?php echo $dataprof['email'] ?><br>
+                                </address>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-4 invoice-col" style="border: 1px solid;">
+                                KEPADA YTH :
+                                <address>
+                                    <strong><?php echo $datacust['cust_name'] ?></strong><br>
+                                    <?php echo $datacust['address'] ?><br>
+                                </address>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h2>
+                                    <strong>SURAT JALAN</strong>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8 invoice-col">
+                                <table width='50%'>
+                                    <tr>
+                                        <td><b>Tanggal</b></td>
+                                        <td>:</td>
+                                        <td><?php echo $datadel['delivery_date'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>NO DN</b></td>
+                                        <td>:</td>
+                                        <td><?php echo $datadel['dn_code'] ?></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-sm-4 invoice-col">
+                                <table width='70%'>
+                                    <tr>
+                                        <td><b>No. Kendaraan</b></td>
+                                        <td>:</td>
+                                        <td><?php echo $datadel['car_no'] ?></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Table row -->
+                        <div class="row">
+                            <div class="col-sm-12" style="height:200px;">
+                                <table width="100%" style="border:1px solid">
+                                    <thead align="Center">
+                                        <tr>
+                                            <th style="border: 1px solid;">NO</th>
+                                            <th style="border: 1px solid;">NAMA BARANG</th>
+                                            <th colspan="2" style="border: 1px solid;">JUMLAH</th>
+                                            <th style="border: 1px solid;">NO. PO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php
+                                        error_reporting(0);
+                                        $seq = 0;
+                                        $result = mysql_query("select * from delivery_detail where dn_code like '%$dncode%'");
+                                        while ($rows = mysql_fetch_array($result)) {
+                                            $seq++;
+                                        ?>
+
+                                            <tr>
+                                                <td align="center" style="border-left: 1px solid;border-right: 1px solid;"><?php echo $seq; ?></td>
+                                                <td align="Left" style="border-left: 1px solid;border-right: 1px solid;">&nbsp;&nbsp;<?php echo $rows['item_name']; ?></td>
+                                                <td align="center" style="border-left: 1px solid;"><?php echo $rows['qty']; ?></td>
+                                                <td align="center" style="border-right: 1px solid;"><?php echo $rows['unit_code']; ?></td>
+                                                <td align="Left" style="border-left: 1px solid;border-right: 1px solid;">&nbsp;&nbsp;<?php echo $rows['po_code']; ?></td>
+                                            </tr>
+                                    </tbody>
+                                <?php
+                                        }
+                                ?>
+
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                        <!-- Table row -->
+                        <div class="row">
+                            <div class="col-12">
+                                <table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" colspan="3">Penerima</th>
+                                            <th class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                            <th class="text-center">Pengirim</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center" style="border: 1px solid;">Security</th>
+                                            <th class="text-center" style="border: 1px solid;">Driver</th>
+                                            <th class="text-center" style="border: 1px solid;">Approved</th>
+                                            <th class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                            <th class="text-center" style="border: 1px solid;">Hormat Kami</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="height: 100px;">
+                                            <td class="text-center" style="vertical-align:bottom;border: 1px solid;">( ............................................. )</td>
+                                            <td class="text-center" style="vertical-align:bottom;border: 1px solid;">( ............................................. )</td>
+                                            <td class="text-center" style="vertical-align:bottom;border: 1px solid;">( ............................................. )</td>
+                                            <td class="text-center" style="vertical-align:bottom;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td class="text-center" style="vertical-align:bottom;border: 1px solid;">( ............................................. )</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                    </div>
+                    <!-- /.invoice -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+
+    <!-- <script type="text/javascript">
+  window.addEventListener("load", window.print());
+</script> -->
+
+</body>
+
+</html>

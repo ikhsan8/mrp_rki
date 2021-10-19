@@ -25,6 +25,16 @@
                                 method="post">
                                 @method('patch')
                                 @csrf
+                                {{-- <button class="btn btn-success btn-sm">
+                                    <i class="ti-save"></i>
+                                    Save</button> --}}
+                                <div class="row">
+                                    <div class="col-lg-4" >
+                                        <a href="{{ route('mrp.delivery.delivery_shipment.delivery_shipment-generatePDF', $shipment->id) }}" class="btn btn-secondary" target="_blank">
+                                            <i class="fas fa-print"></i> Print</a>
+                                    </div>
+                                </div>
+                                <br>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <input type="hidden" name="shipment_id">
