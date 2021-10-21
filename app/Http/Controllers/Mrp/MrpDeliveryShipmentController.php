@@ -43,7 +43,7 @@ class MrpDeliveryShipmentController extends Controller
 
     public function generatePDF($id)
     {
-        $data['page_title'] = "PDF";
+        // $data['page_title'] = "PDF";
         $data = [
             'name' => 'PT. REKADAYA KREASI INDONESIA',
             'address1' => 'ALT. CIBUBUR - CILEUNGSI, ',
