@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Delivery</title>
     <style type="text/css">
- html, body, div, span, applet, object, iframe,
+    html, body, div, span, applet, object, iframe,
         h1, h2, h3, h4, h5, h6, p, blockquote, pre,
         a, abbr, acronym, address, big, cite, code,
         del, dfn, em, img, ins, kbd, q, s, samp,
@@ -309,7 +309,8 @@
                 </div>
             </div>
             <div class="right">
-                <div class="col-sm-4" style="  border: 1px solid black; border-radius: 5px; padding: 5px;">
+                <div class="col-sm-4" style="  border: 1px solid black; padding: 5px;">
+                    {{-- border-radius: 5px; --}}
                     KEPADA YTH :
                     <address> 
                         <div style="text-align: left; margin-top: 10px">
@@ -342,7 +343,7 @@
         <div class="right">
             <br>
             <p>
-                No.Kendaraan : {{ $shipments->vehicle->car_code }}
+                No.Kendaraan : &nbsp;{{ $shipments->vehicle->car_code }}
             </p>
         </div>
     <br>
