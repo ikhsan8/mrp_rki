@@ -19,10 +19,7 @@ use App\Http\Controllers\Mrp\MrpProductionController;
 use App\Http\Controllers\Mrp\MrpPlanningProductionController;
 use App\Http\Controllers\Mrp\MrpDeliveryPlanningController;
 use App\Http\Controllers\Mrp\MrpDeliveryShipmentController;
-use App\Http\Controllers\Mrp\MrpInventoryShipmentController;
-use App\Http\Controllers\Mrp\MrpInventoryProductController;
 use App\Http\Controllers\Mrp\MrpInventoryMaterialListController;
-use App\Http\Controllers\Mrp\MrpStockDataInventoryController;
 use App\Http\Controllers\Mrp\MrpInventoryMaterialIncomingController;
 use App\Http\Controllers\Mrp\MrpInventoryMaterialOutController;
 use App\Http\Controllers\Mrp\MrpInventoryProductListController;
@@ -33,8 +30,8 @@ use App\Http\Controllers\Mrp\MrpReportProductionController;
 use App\Http\Controllers\Mrp\MrpReportDeliveryController;
 use App\Http\Controllers\Mrp\MrpReportInventoryMaterialController;
 use App\Http\Controllers\Mrp\MrpReportInventoryProductController;
-use App\Http\Controllers\Mrp\MrpInventoryMaterialAddStockController;
 use App\Http\Controllers\Mrp\MrpReportWipController;
+use App\Http\Controllers\Mrp\MrpReportBomNewController;
 use App\Http\Controllers\Mrp\MrpReportBomController;
 use App\Http\Controllers\Mrp\MrpReportSmcController;
 use App\Http\Controllers\Mrp\MrpReportPlanningProductionController;
@@ -43,9 +40,7 @@ use App\Http\Controllers\Mrp\MrpDashboardController;
 use App\Http\Controllers\Mrp\MrpForecastController;
 use App\Http\Controllers\Mrp\MrpImportController;
 use App\Http\Controllers\Mrp\MrpMaterialSortirController;
-use App\Models\Mrp\MrpMaterialSortir;
-use App\Models\Mrp\MrpMaterialSortirNG;
-use App\Models\Mrp\MrpMaterialSortirOK;
+
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -585,6 +580,9 @@ Route::prefix('report_bom')->name('mrp.report.report_bom-')->middleware('auth')-
     Route::get('/report_bom-pdf', [MrpReportBomController::class, 'export_pdf'])->name('export_pdf');
 
 });
+
+// New BOM Report 
+Route::get('/report-bom', [MrpReportBomNewController::class, 'index'])->name('report-bom-new');
 
 // Summary Forecast Customer
 Route::prefix('report_smc')->name('mrp.report_smc-')->group(function () {

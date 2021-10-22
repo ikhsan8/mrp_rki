@@ -176,7 +176,7 @@
     @endif -->
 
     @if (auth()->user()->can('report_bom-list'))
-    <div class="col-lg-3 col-md-6" id="report_bom" onclick="location.href='{{ route('mrp.report.report_bom-list')}}'">
+    <div class="col-lg-3 col-md-6" id="report_bom" onclick="location.href='{{ route('report-bom-new')}}'">
         <div class="box card">
             <div class="box-body">
                 <div class="d-flex align-items-center">
