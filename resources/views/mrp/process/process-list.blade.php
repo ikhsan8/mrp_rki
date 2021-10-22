@@ -206,10 +206,7 @@
             content: 'url:process-show/detail/' + id,
             onContentReady: function () {
                 var self = this;
-                // this.setContentPrepend('<div>Prepended text</div>');
-                // setTimeout(function () {
-                //     self.setContentAppend('<div>Appended text after 2 seconds</div>');
-                // }, 2000);
+                
             },
             columnClass: 'medium',
         });
