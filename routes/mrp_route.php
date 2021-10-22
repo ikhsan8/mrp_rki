@@ -361,7 +361,7 @@ Route::prefix('delivery_shipment')->name('mrp.delivery.delivery_shipment.deliver
     Route::get('/delivery_shipment-edit/{id}', [MrpDeliveryShipmentController::class, 'edit'])->name('edit');
     Route::delete('/delivery_shipment-delete', [MrpDeliveryShipmentController::class, 'destroy'])->name('delete');
     Route::delete('/inventory_shipment-delete', [MrpDeliveryShipmentController::class, 'inventoryShipmentDestroy'])->name('inventoryShipmentDelete');
-
+    Route::get('/delivery_shipment-pdf/{id}', [MrpDeliveryShipmentController::class, 'generatePDF'])->name('generatePDF');
 });
 
 // inventory product
