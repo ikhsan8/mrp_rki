@@ -13,6 +13,8 @@ use App\Models\Mrp\MrpCustomer;
 use App\Models\Mrp\MrpDeliveryShipment;
 use App\Models\Mrp\MrpInventoryProductList;
 use App\Http\Controllers\Controller;
+// use Barryvdh\DomPDF\PDF;
+use PDF;
 use Illuminate\Http\Request;
 use DB;
 // use Illuminate\Support\Facades\DB;
@@ -37,6 +39,25 @@ class MrpDeliveryShipmentController extends Controller
         $data['page_title'] = 'Delivery Shipment List';
         $data['shipments'] = MrpDeliveryShipment::orderBy('id', 'desc')->get();
         return view('mrp.delivery.delivery_shipment.delivery_shipment-list', $data);
+    }
+
+    public function generatePDF($id)
+    {
+        // $data['page_title'] = "PDF";
+        $data = [
+            'name' => 'PT. REKADAYA KREASI INDONESIA',
+            'address1' => 'ALT. CIBUBUR - CILEUNGSI, ',
+            'address2' => 'CIANGSANA RAYA JL. NUSA INDAH NO. 55, DS. NAGRAK, GN. PUTRI',
+            'phone' => '021-8232888, 82498152',
+            'fax' => '021 8231774, 82498153',
+        ];
+        $data['shipments'] = MrpDeliveryShipment::findOrFail($id);
+        $data['inventory_shipments'] = MrpInventoryShipment::where('delivery_shipment_id', $id)->get();
+
+        $pdf = PDF::loadView('mrp.delivery.delivery_shipment.delivery_shipment-print', $data);
+
+        return $pdf->stream('Delivery.pdf');
+        // return $pdf->download('Delivery.pdf');
     }
 
     /**
@@ -65,20 +86,22 @@ class MrpDeliveryShipmentController extends Controller
     public function store(Request $request)
     {
 
-        $validated = $request->validate([
-            'dn_code' => 'required|unique:mrp_delivery_shipments',
-            'delivery_date' => 'required',
-            'vehicle_id' => 'required',
-            'cust_id' => 'nullable',
-            'planning_id' => 'required',
-            'description' => 'nullable|min:3'
-        ],
-    [
-        'dn_code.required' => '*DN Code Wajib Diisi!',
-        'delivery_date.required' => '*Delivery Date Code Wajib Diisi!',
-        'vehicle_id.required' => '*Vehicle Wajib Diisi!',
-        'planning_id.required' => '*Planning Wajib Diisi!',
-    ]);
+        $validated = $request->validate(
+            [
+                'dn_code' => 'required|unique:mrp_delivery_shipments',
+                'delivery_date' => 'required',
+                'vehicle_id' => 'required',
+                'cust_id' => 'nullable',
+                'planning_id' => 'required',
+                'description' => 'nullable|min:3'
+            ],
+            [
+                'dn_code.required' => '*DN Code Wajib Diisi!',
+                'delivery_date.required' => '*Delivery Date Code Wajib Diisi!',
+                'vehicle_id.required' => '*Vehicle Wajib Diisi!',
+                'planning_id.required' => '*Planning Wajib Diisi!',
+            ]
+        );
 
         // dd($request->all());
         DB::beginTransaction();
@@ -183,17 +206,19 @@ class MrpDeliveryShipmentController extends Controller
             }
         } else {
 
-            $validated = $request->validate([
-                'inventory_product_list_id' => 'required',
-                'quantity' => "required",
-                'unit_id' => 'required',
-                'po_code' => "unique:mrp_inventory_shipments,po_code,$id",
-            ],
-        [
-            'inventory_product_list_id.required' => 'Product Wajib Diisi!',
-            'quantity.required' => 'Quantity Wajib Diisi!',
-            'unit_id.required' => 'Unit Wajib Diisi!',
-        ]);
+            $validated = $request->validate(
+                [
+                    'inventory_product_list_id' => 'required',
+                    'quantity' => "required",
+                    'unit_id' => 'required',
+                    'po_code' => "unique:mrp_inventory_shipments,po_code,$id",
+                ],
+                [
+                    'inventory_product_list_id.required' => 'Product Wajib Diisi!',
+                    'quantity.required' => 'Quantity Wajib Diisi!',
+                    'unit_id.required' => 'Unit Wajib Diisi!',
+                ]
+            );
 
             try {
                 MrpInventoryShipment::create([
@@ -232,7 +257,7 @@ class MrpDeliveryShipmentController extends Controller
             Session::flash('message', "Data $request->text Successfuly deleted !");
             Session::flash('alert-class', 'alert-success');
             $inventoryShipment = MrpInventoryShipment::findOrFail($request->id);
-            
+
             $inventoryProductList = MrpInventoryProductList::findOrFail($inventoryShipment->inventory_product_list_id);
             $inventoryProductList->stock = $inventoryProductList->stock + $inventoryShipment->quantity;
             $inventoryProductList->save();

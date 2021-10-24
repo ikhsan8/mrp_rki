@@ -56,7 +56,7 @@
 
 </style>
 
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-6">
         <div class="white_card mb_30 shadow pt-4">
             <div class="white_card_body">
@@ -93,9 +93,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
-@if (isset($status))
+{{-- @if (isset($status)) --}}
 <div class="col-xl-12">
     <div class="white_card mb_30 shadow pt-1">
         <div class="white_card_body" style="padding: 5px 10px 15px 15px !important;">
@@ -103,7 +103,7 @@
                 <div class="white_box_tittle list_header">
                     <h4>{{ $page_title }}</h4>
 
-                    <div class="box_right d-flex lms_block">
+                    {{-- <div class="box_right d-flex lms_block">
                         <a href="{{ route('mrp.report.report_bom-export', $start_date) }}">
                             <div class="btn btn-success ml-10 btn-sm">
                                 <i class="fas fa-file-excel"></i>
@@ -117,8 +117,8 @@
                             </div>
                         </a> --}}
                         
-                    </div>
-                </div>
+                </div> 
+            </div>
                 @if (Session::has('message'))
                     <div class="alert  {{ Session::get('alert-class', 'alert-info') }} d-flex align-items-center justify-content-between"
                         role="alert">
@@ -183,7 +183,7 @@
     </div>
 </div>
 </div>
-@endif
+{{-- @endif --}}
 @endsection
 
 

@@ -112,6 +112,7 @@
                 <!-- <li><a href="{{ route('mrp.report_initial-list')}}">Report Initial</a></li> -->
                  <li><a href="{{ route('mrp.report.report_bom-list')}}">Report BOM</a></li> 
                 <li><a href="{{ route('mrp.report-inventory-index')}}">Report Inventory</a></li>
+                <li><a href="{{ route('report-bom-new')}}">Report BOM</a></li>
                 <!-- <li><a href="{{ route('mrp.report.report_delivery-list')}}">Report Delivery</a></li> -->
 
             </ul>

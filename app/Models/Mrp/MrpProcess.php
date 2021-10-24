@@ -30,7 +30,7 @@ class MrpProcess extends Model
 
     public function processMachines()
     {
-        return $this->belongsToMany(MrpMachine::class, 'mrp_process_machines', 'process_machines_id', 'machine_id');
+        return $this->belongsToMany(MrpMachine::class, 'mrp_process_machines', 'barang_id', 'machine_id');
     }
 
     public function productions()

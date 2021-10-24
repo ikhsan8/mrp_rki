@@ -100,7 +100,7 @@
                                             multiple="multiple">
                                             @foreach ($customers as $customer)
                                             <option value="{{ $customer->id }}"
-                                                {{ in_array($customer->id, old('process_id') ?? $planning->customers->pluck('id')->toArray()) ? 'selected' : '' }}>
+                                                {{ in_array($customer->id, old('customer_id') ?? $planning->customers->pluck('id')->toArray()) ? 'selected' : '' }}>
                                                 {{ $customer->customer_code }} | {{ $customer->customer_name }}</option>
                                             @endforeach
                                         </select>

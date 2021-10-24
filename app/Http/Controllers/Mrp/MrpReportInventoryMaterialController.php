@@ -134,16 +134,16 @@ class MrpReportInventoryMaterialController extends Controller
            
     }
            $data['material_all'] = $material->map(function ($q){
-               $data['date_in'] = $q->inventoryMaterialLists[0]->inventoryMaterialIncomings[0]->created_at;
-               $data['date_out'] = $q->inventoryMaterialLists[0]->inventoryMaterialOuts[0]->created_at;
-               $data['part_name'] = $q->inventoryMaterialLists[0]->material->material_name;
-               $data['part_number'] = $q->inventoryMaterialLists[0]->material->part_number;
-               $data['incoming'] = $q->inventoryMaterialLists[0]->inventoryMaterialIncomings->sum('material_incoming');
+               $data['date_in'] = $q->inventoryMaterialLists[0]->inventoryMaterialIncomings[0]->created_at ?? '';
+               $data['date_out'] = $q->inventoryMaterialLists[0]->inventoryMaterialOuts[0]->created_at ?? '';
+               $data['part_name'] = $q->inventoryMaterialLists[0]->material->material_name ?? '';
+               $data['part_number'] = $q->inventoryMaterialLists[0]->material->part_number ?? '';
+               $data['incoming'] = $q->inventoryMaterialLists[0]->inventoryMaterialIncomings->sum('material_incoming') ?? '';
                $data['outgoing'] = $q->inventoryMaterialLists[0]->inventoryMaterialOuts->sum('material_outgoing');
-               $data['sortir'] = $q->inventoryMaterialLists[0]->materialSortir->sum('qty_sortir');
-               $data['sortir_ok'] = $q->inventoryMaterialLists[0]->materialSortirOk->sum('qty_ok');
-               $data['sortir_ng'] = $q->inventoryMaterialLists[0]->materialSortirNg->sum('qty_ng');
-               $data['stock'] = $q->inventoryMaterialLists->sum('stock');
+               $data['sortir'] = $q->inventoryMaterialLists[0]->materialSortir->sum('qty_sortir') ?? '';
+               $data['sortir_ok'] = $q->inventoryMaterialLists[0]->materialSortirOk->sum('qty_ok') ?? '';
+               $data['sortir_ng'] = $q->inventoryMaterialLists[0]->materialSortirNg->sum('qty_ng') ?? '';
+               $data['stock'] = $q->inventoryMaterialLists->sum('stock') ?? '';
                
                
                

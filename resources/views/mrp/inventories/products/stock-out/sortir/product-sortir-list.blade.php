@@ -58,7 +58,7 @@
                         @endif
                         <div class="QA_table mb_30">
                             <!-- table-responsive -->
-                            <table class="table lms_table_active3 ">
+                            <table class="table product_sortir ">
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
@@ -121,12 +121,19 @@
 @endpush
 @push('js')
 
-    <script src="{{ asset('assets') }}/vendors/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('assets') }}/vendors/datatable/js/dataTables.responsive.min.js"></script>
-    <script src="{{ asset('assets') }}/vendors/datatable/js/dataTables.buttons.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/dataTables.responsive.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/dataTables.buttons.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/dataTables.buttons.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/buttons.flash.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/jszip.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/pdfmake.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/vfs_fonts.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/buttons.html5.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/buttons.print.min.js"></script>
     <script>
-        if ($('.lms_table_active3').length) {
-            $('.lms_table_active3').DataTable({
+        if ($('.product_sortir').length) {
+            $('.product_sortir').DataTable({
                 bLengthChange: false,
                 "bDestroy": false,
                 language: {
@@ -141,9 +148,11 @@
                     visible: false
                 }],
                 responsive: true,
-                searching: true,
-                info: true,
-                paging: true
+            searching: true,
+            info: true,
+            paging: true,
+            dom: 'Bfrtip',
+            buttons: ['csv', 'excel', 'pdf']
             });
         }
 
