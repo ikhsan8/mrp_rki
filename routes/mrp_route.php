@@ -38,6 +38,7 @@ use App\Http\Controllers\Mrp\MrpReportWipController;
 use App\Http\Controllers\Mrp\MrpReportBomController;
 use App\Http\Controllers\Mrp\MrpReportSmcController;
 use App\Http\Controllers\Mrp\MrpReportPlanningProductionController;
+use App\Http\Controllers\Mrp\MrpReportPlanningNewController;
 use App\Http\Controllers\Mrp\MrpReportInitialController;
 use App\Http\Controllers\Mrp\MrpDashboardController;
 use App\Http\Controllers\Mrp\MrpForecastController;
@@ -529,13 +530,16 @@ Route::prefix('product-out')->name('mrp.product-out-')->middleware('auth')->grou
     
 });
 
+    Route::get('/report-planning', [MrpReportPlanningNewController::class, 'index'])->name('report-planning');
+
 // Report planning
 Route::prefix('report_planning')->name('mrp.report_planning-')->middleware('auth')->group(function () {
-    Route::get('/report_planning-list', [MrpReportPlanningProductionController::class, 'index'])->name('list');
-    Route::get('/report-planning-detail/{id}', [MrpReportPlanningProductionController::class, 'detail'])->name('detail');
-    Route::post('/report_planning-list', [MrpReportPlanningProductionController::class, 'index'])->name('listt');
-    Route::get('/report_planning-export, {start_date}', [MrpReportPlanningProductionController::class, 'export'])->name('export');
-    Route::get('/report_planning-pdf', [MrpReportPlanningProductionController::class, 'export_pdf'])->name('export_pdf');
+    Route::get('/', [MrpReportPlanningNewController::class, 'index'])->name('list');
+    Route::get('/report-planning-detail/{id}', [MrpReportPlanningNewController::class, 'detail'])->name('detail');
+    Route::post('/report_planning-list', [MrpReportPlanningNewController::class, 'index'])->name('test');
+    Route::get('/report_planning-export, {start_date}', [MrpReportPlanningNewController::class, 'export'])->name('export');
+    Route::get('/report_planning-pdf', [MrpReportPlanningNewController::class, 'export_pdf'])->name('export_pdf');
+
 });
 
 // Report Initial 
@@ -544,6 +548,7 @@ Route::prefix('report_initial')->name('mrp.report_initial-')->middleware('auth')
     Route::post('/report_initial-list', [MrpReportInitialController::class, 'index'])->name('list');
     Route::get('/report_initial-export, {start_date}', [MrpReportInitialController::class, 'export'])->name('export');
     Route::get('/report_initial-pdf', [MrpReportInitialController::class, 'export_pdf'])->name('export_pdf');
+
 });
 
 // Report production

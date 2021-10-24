@@ -54,4 +54,9 @@ class MrpPlanningProduction extends Model
         return $this->belongsTo(MrpPlanningProductionProduct::class, 'planning_production_id');
     }
 
+    public function shift()
+    {
+        return $this->belongsTo(MrpShift::class);
+    }
+
 }

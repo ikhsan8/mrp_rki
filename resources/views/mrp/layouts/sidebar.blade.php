@@ -106,11 +106,11 @@
 
             <ul>
                 <!-- <li><a href="{{ route('mrp.report_smc-list')}}">Report Forecast</a></li> -->
-                <li><a href="{{ route('mrp.report_planning-list')}}">Report Planning Production</a></li>
+                <li><a href="{{ route('report-planning')}}">Report Planning Production</a></li>
                 <li><a href="{{ route('mrp.report.report-list')}}">Report Production</a></li>
                 <li><a href="{{ route('mrp.report.report_wip-list')}}">Report WIP</a></li>
                 <!-- <li><a href="{{ route('mrp.report_initial-list')}}">Report Initial</a></li> -->
-                <!-- <li><a href="{{ route('mrp.report.report_bom-list')}}">Report BOM</a></li> -->
+                 <li><a href="{{ route('mrp.report.report_bom-list')}}">Report BOM</a></li> 
                 <li><a href="{{ route('mrp.report-inventory-index')}}">Report Inventory</a></li>
                 <!-- <li><a href="{{ route('mrp.report.report_delivery-list')}}">Report Delivery</a></li> -->
 

@@ -383,6 +383,7 @@ class MrpPlanningProductionController extends Controller
 
         $data['plan_qty'] = $planning->plan_qty;
         $data['planning_detail'] = $planning;
+        
         // $data['bom_name'] = $planning->boms->bom_name;
         // $data['process'] = MrpProcess::find($id);
         $data['process'] = $planning->process;

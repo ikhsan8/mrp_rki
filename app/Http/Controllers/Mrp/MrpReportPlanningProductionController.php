@@ -224,7 +224,7 @@ class MrpReportPlanningProductionController extends Controller
         $data['production_process_machine'] = $production->productionProcessMachineProduct;
         $data['date_list_header'] = $dateListHeader;
         $data['date_list_color'] = $dateColor;
-
+        $data['planningsss'] = MrpPlanningProduction::all();
 
 
 

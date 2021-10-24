@@ -28,4 +28,9 @@ class MrpShift extends Model
     {
         return $this->hasMany(MrpReportWip::class);
     }
+
+    public function planningProduction()
+    {
+        return $this->hasMany(MrpPlanningProduction::class);
+    }
 }

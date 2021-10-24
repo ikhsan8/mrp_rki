@@ -95,341 +95,139 @@
                         <h4 id="report_detail" style="color: chocolate">Report Details</h4>
                         <div></div>
                         <div class="row canvas_div_pdf">
-                            <div class="col-lg-12">
                                 <div class="table-responsive ">
-                                    <!-- <table class="report table-bordered" style="font-size: 11px;">
-
-                                <tbody>
-                                    <tr>
-                                        {{--  --}}
-                                        <td rowspan="6">
-                                            <img style="width: 100px;height: 51px;"
-                                                src="{{ asset('assets') }}/img/itokin.png" alt="">
-
-                                        </td>
-
-                                        {{--  --}}
-                                        <td width="100px">Nama Proses </td>
-                                        <td width="170px">: <span style="font-weight: 800">{{$production->production_name}}</span></td>
-
-                                        {{--  --}}
-                                        <td rowspan='2' width="180px" style="text-align: center">
-                                            <span style="font-weight: 800;font-size:15px">CHECK SHEET</span>
-                                        </td>
-
-                                        {{--  --}}
-                                        <td width="100px">No.Dokumen </td>
-                                        <td width="130px">: <span style="font-weight: ">{{$production->production_code}} </span></td>
-
-                                        {{--  --}}
-                                        <td rowspan="3" width="70px" style="text-align: left">
-                                            <span style="font-size:15px;font-weight: 800">PLAN </span>
-                                        </td>
-
-                                        {{--  --}}
-                                        <td width="90px" style="text-align: center">Mengetahui</td>
-
-                                        {{--  --}}
-                                        <td width="90px" style="text-align: center">Diperiksa</td>
-
-                                        {{--  --}}
-                                        <td width="90px" style="text-align: center">Dibuat</td>
-
-
-                                        {{--  --}}
-                                        <td rowspan="4" colspan="3" width="170px" style="vertical-align: top;">
-                                            <span style="display: block">Bulan Produksi</span>
-                                            <span
-                                                style="font-size: 22px;display: block;text-align: center;margin-top: 10px;"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        {{--  --}}
-                                        <td>No Proses </td>
-                                        <td>: <span style="font-weight: 800"> </span></td>
-
-                                        {{--  --}}
-                                        <td width="">Tgl Pembuatan </td>
-                                        <td width="">: <span style="font-weight: "> </span></td>
-
-
-                                        {{--  --}}
-                                        <td rowspan="2">
-                                            
-                                        </td>
-                                        <td rowspan="2">
-                                        </td>
-                                        <td rowspan="2">
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        {{--  --}}
-                                        <td>Nama Mesin </td>
-                                        <td>: <span style="font-weight: 800"> </span></td>
-
-                                        {{--  --}}
-                                        <td rowspan='4' width="200px" style="text-align: center">
-                                            <span style="font-weight: 800;font-size:17px">PLANNING PRODUCTION </span>
-                                        </td>
-
-                                        {{--  --}}
-                                        <td width="">No.Revisi </td>
-                                        <td width="">: <span style="font-weight: ">00 </span></td>
-
-
-                                    </tr>
-                                    <tr>
-                                        {{--  --}}
-                                        <td>No Mesin </td>
-                                        <td>: <span style="font-weight: 800"> </span></td>
-
-                                        {{--  --}}
-                                        <td width="">Tgl Revisi </td>
-                                        <td width="">: <span style="font-weight: "> </span></td>
-
-                                        {{--  --}}
-                                        <td rowspan="3" width="70px" style="text-align: left">
-                                            <span style="font-size:15px;font-weight: 800">RESULT </span>
-                                        </td>
-
-                                        {{--  --}}
-                                        <td rowspan="2">
-
-                                        </td>
-                                        <td rowspan="2"></td>
-                                        <td rowspan="2"></td>
-
-                                    </tr>
-                                    <tr>
-                                        {{--  --}}
-                                        <td>Nama Part </td>
-                                        <td>: <span style="font-weight: 800"> </span></td>
-
-                                        {{--  --}}
-                                        <td width="">Halaman </td>
-                                        <td width="">: <span style="font-weight: s"> </span></td>
-
-                                        {{--  --}}
-                                        <td width="10px" rowspan="2">Tgl :</td>
-                                        <td width="56px" rowspan="2">{!! $date !!}</td>
-                                        <td width="56px" rowspan="2">Rev : 00</td>
-                                    </tr>
-
-                                    <tr>
-                                        {{--  --}}
-                                        <td>No Part </td>
-                                        <td>: <span style="font-weight: 800">ALL MODEL</span></td>
-
-                                        {{--  --}}
-                                        <td width="">Departemen </td>
-                                        <td width="">: <span style="font-weight: ">Produksi </span></td>
-
-                                        {{--  --}}
-                                        <td style="text-align: center">Division Head</td>
-                                        <td style="text-align: center" colspan="2">Dept.Head</td>
-
-                                    </tr>
-
-
-                                </tbody>
-                            </table> -->
-                                    @foreach ($list_process as $process_name => $lp)
-                                    <table class="report table-bordered " style="font-size: 11px;margin-bottom:20px;">
-                                        <thead>
+                                    
+                                {{-- <div class="row"> --}}
+        {{-- <div class="col-lg-12"> --}}
+            {{-- <div class="white_card mb_30 shadow pt-4"> --}}
+                <div class="white_card_body">
+                    <div class="QA_section">
+                        <div class="white_box_tittle list_header">
+                            {{-- <h4>Report Wip</h4> --}}
+                        </div>
+                        <div>
+                            <div class="table-responsive">
+                                <table class="table lms_table_active3">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Date</th>
+                                            <th>Planning Name</th>
+                                            <th>Product</th>
+                                            <th>Shift</th>
+                                            <th>Qty Plan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($planning as  $plannings)
+                                        
                                             <tr>
-                                                <th width="20px">No</th>
-                                                <th colspan="2">{{$process_name}}</th>
-                                                <th>Item</th>
-                                                @foreach ($date_list_header as $key => $dlh)
-                                                <th width="30" style="width: 50px !important; background:{{$date_list_color[$key]}}">{{$dlh}}</th>
-                                                @endforeach
-                                                <th>Sum</th>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $plannings->date }}</td>
+                                                <td>{{ $plannings->planningProduction->plan_name  }}</td>
+                                                <td>{{ $plannings->planningProduction->shift->shift_name }}</td>
+                                                <td>{{ $plannings->qty_plan }}</td>
                                                 
                                             </tr>
-                                        </thead>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <br>
+                                {{-- @foreach ($report_wip as $product => $machines)
+                                <h3 style="background:#2B453F;color:white;">{{ $product }}</h3>
+                                <table class="report table-bordered" style=" margin-bottom:25px;">
+                                    <thead>
+                                        <tr>
+                                            <th>Machine</th>
+                                            <th>Process</th>
+                                            <th>Shift</th>
+                                            <th>Item</th>
+                                            <th>1</th>
+                                            <th>2</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($machines as $machine => $process)
+                                            @foreach ($process as $proc => $shifts)
+                                                @foreach ($shifts as $shift => $dataWip)
+                                                    <tr>
+                                                        <td>{{ $proc  }}</td>
+                                                        <td>{{ $machine }}</td>
+                                                        <td>{{ $shift }}</td>
+                                                        <td style="padding:0px;">
+                                                            <table class="" style="width:100%">
+                                                                <tr>
+                                                                    <td>Actual</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Plan</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Good</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Reject</td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+
+                                                        @php
+                                                            $dateBefore = 0;
+                                                        @endphp
+                                                        @foreach ($dataWip as $dw)
+
+                                                            @php
+                                                                $dateBefore = $dw['dateIndex']
+                                                            @endphp
+                                                            <td style="padding:0px;">
+                                                                <table class="" style="width:100%">
+
+                                                                    <tr>
+                                                                        <td>{{ $dw['qty_good'] }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{ $dw['qty_plan'] }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{ $dw['qty_good'] }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{ $dw['qty_reject'] }}</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                            
+                                                        @endforeach
+                                                    </tr>
+                                                @endforeach
+                                            
+                                            @endforeach
+                                           
+                                        @endforeach
+                                       
+                                        <tr></tr>
+                                    </tbody>
+
+                                </table>
+                                @endforeach --}}
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{-- </div> --}}
+        {{-- </div> --}}
+    {{-- </div> --}}
+
                                     
 
 
-                                        @foreach ($lp as $machine_name => $item)
-                                        @php
-                                        $isR = 0;
-                                        @endphp
-                                        @foreach ($item as $key => $v)
-                                        @php
-                                        if(count($item)>1){
-                                        $rowSpan = count($item);
-                                        $isGenerate = false;
-                                        $isR++;
-                                        }else{
-                                        $rowSpan = '';
-                                        $isGenerate = true;
-                                        $isR = 0;
-                                        }
                                         
-                                        @endphp
                                         
-                                        <tr>
-                                            {{-- machine name --}}
-                                            @if ($rowSpan>1)
-                                            @if ($isR == 1)
-                                            <td rowSpan="{{($rowSpan*1) *$shifts->count() }}">{{$machine_name}}</td>
-                                            @endif
-                                            @else
-                                            <td rowSpan="{{1*$shifts->count()}}">{{$machine_name}}</td>
-                                            @endif
-                                            {{-- part name --}}
-                                            @foreach ($v as $k => $v2)
-                                            <td width="10px" rowspan="{{1*$shifts->count()}}">
-                                                <span class="d-block" style="font-size: 20px;width:50px;font-weight:bold;word-wrap: break-word">{{$k}}</span>
-                                            </td>
-                                            @endforeach
+                                        
                                              
-                                        @foreach ($shifts as $shift)
-
-                                            @php
-                                                $sum1 = 0;
-                                                $sum2 = 0;
-                                            @endphp
-                                            @if ($loop->iteration == 1)
-                                            
-                                                    <!-- SHIFT FIRST -->
-                                                   
-                                                    <td rowspan="1">{{$shift->shift_name}}</td>
-                                                    <td>
-                                                        <span class="pan plan">Plan</span>
-                                                    </td>
-                                                   
-                                                    @foreach ($v2['from_wip'] as $kp => $dataProcess)
-                                                    
-                                                        @foreach ($dataProcess as $dp => $dataProc)
-                                                            
-                                                            @if ($dataProc['shift_id'] === $shift->id)
-                                                                @php
-                                                                    $sum1 += ($dataProc['qty_plan'] === '-') ? 0 :$dataProc['qty_plan'];
-                                                                @endphp
-                                                                {{-- @php
-                                                                    $sum1 = $dataProc['sum_plan'];
-                                                                @endphp --}}
-                                                                <td style="background: {{$dataProc['color'] != '' ? $dataProc['color'] : (($dataProc['type'] === 'WIP' ? '#d9dee1' : '#2CA44C'))}} ">
-                                                                {{-- <td style="background: {{$dataProc['type'] === 'WIP' ? '#d9dee1' : '#2CA44C'}}"> --}}
-                                                                    <span class="value-report " style="color:black" > 
-                                                                        {{$dataProc['qty_plan']}}
-                                                                    </span>
-                                                               
-                                                                    <!-- @foreach ($v2['from_oee'][$kp] as $ddp)
-                                                                        {{-- chek dari oee --}}
-                                                                        @if ($ddp['shift_id'] === $shift->id)
-                                                                            <span class="value-report" style="color:green" > 
-                                                                                {{$ddp['qty_plan']->pivot->quantity}}
-                                                                            </span>
-                                                                        @endif -->
-                                                                    @endforeach
-                                                                </td>
-                                                            @else
-                                                                
-                                                                @if (count($dataProcess) <= 1)
-                                                                <td style="background: {{$dataProc['color'] != '' ? $dataProc['color'] : (($dataProc['type'] === 'WIP' ? '#d9dee1' : '#2CA44C'))}} ">
-                                                                        <span class="value-report " style="color:black" > 
-                                                                            {{$dataProc['qty_plan']}}
-                                                                        </span>
-                                                                        <!-- <span class="value-report">-</span>
-                                                                         @foreach ($v2['from_oee'][$kp] as $ddp)
-                                                                            {{-- chek dari oee --}}
-                                                                            @if ($ddp['shift_id'] === $shift->id)
-                                                                                <span class="value-report" style="color:green" > 
-                                                                                    {{$ddp['qty_plan']}}
-                                                                                </span>
-                                                                            @endif
-                                                                        
-                                                                        @endforeach  -->
-                                                                    </td>  
-                                                                @endif
-                                                            @endif
-                                                        @endforeach
-                                                    @endforeach
-                                                    <td class="">
-                                                        {{$sum1  }}
-                                                    </td>
-                                                    
-                                                   
-                                                   
-                                                </tr>
-                                             
-                                            <!-- -->
-                                                
-                                            @else
-                                                {{-- SHIFT 2 --}}
-                                          
-                                                <div class="shift2">
-                                                    <tr>
-                                                        <td rowspan="1">{{$shift->shift_name}}</td>
-                                                        <td>
-                                                            <span class="pan plan">Plan</span>
-                                                        </td>
-                                                        @foreach ($v2['from_wip'] as $kp =>$dataProcess)
-                                                        
-                                                            @foreach ($dataProcess as $dataProc)
-                                                               
-                                                                @if ($dataProc['shift_id'] === $shift->id)
-                                                                    @php
-                                                                        $sum2 += ($dataProc['qty_plan'] === '-') ? 0 :$dataProc['qty_plan'];
-                                                                    @endphp
-                                                                    <td style="background: {{$dataProc['color'] != '' ? $dataProc['color'] : (($dataProc['type'] === 'WIP' ? '#d9dee1' : '#2CA44C'))}} ">
-                                                                        <span class="value-report " style="color:black" > 
-                                                                            {{$dataProc['qty_plan']}}
-                                                                        </span>
-                                                                         <!-- {{-- chek dari oee --}}
-                                                                        @foreach ($v2['from_oee'][$kp] as $ddp)
-                                                                            <span class="value-report" style="color:green" > 
-                                                                                @if ($ddp['shift_id'] === $shift->id)
-                                                                                {{$ddp['qty_plan']}}
-                                                                                @endif
-                                                                            </span>
-                                                                            @endforeach -->
-                                                                    </td>
-                                                                @else
-                                                                    @php
-                                                                        $sum2 += ($dataProc['plan_all'] === '-') ? 0 :$dataProc['plan_all'];
-                                                                    @endphp
-                                                                    @if (count($dataProcess) <= 1)
-                                                                        <td style="background: {{$dataProc['color'] != '' ? $dataProc['color'] : (($dataProc['type'] === 'WIP' ? '#d9dee1' : '#2CA44C'))}} ">
-                                                                            <span class="value-report">
-                                                                                {{$dataProc['plan_all']}}
-                                                                            </span>
-                                                                            
-                                                                            <!-- @foreach ($v2['from_oee'][$kp] as $ddp)
-                                                                                {{-- chek dari oee --}}
-                                                                                <span class="value-report" style="color:green" > 
-                                                                                    @if($ddp['shift_id'] === $shift->id)
-                                                                                        <span class="value-report" style="color:green" > 
-                                                                                            {{$ddp['qty_plan']}} 
-                                                                                        </span>
-                                                                                    @endif
-                                                                                </span>
-                                                                            @endforeach -->
-                                                                        </td>  
-                                                                    @endif
-                                                                @endif
-                                                            @endforeach
-                                                        @endforeach
-                                                        <td>{{$sum2}}</td>
-                                                        
-                                                    </tr>
-                                                   
-                                                </div>
-                                            @endif
-
-                                        @endforeach
-
-                                        
-
-
-                                        @endforeach
-                                        @endforeach
-                                    </table>
-                                    @endforeach
-
+                                         
                                 </div>
                             </div>
                         </div>
@@ -439,8 +237,7 @@
                     
                     
                 </div>
-            {{-- </form> --}}
-        </div>
+       
     </div>
 </div>
 </div>
@@ -601,25 +398,25 @@
         return trProcess;
     }
 
-    function rowMachine(machine, process) {
-        return `<tr>
-                    <td>MACHINE 2</td>
-                    <td>
-                        <div class="form-group">
-                            <select placeholder="CHOOSE PRODUCT" class="form-control js-example-basic-multiple" name="product[${process.id}_${machine.id}][]"
-                                multiple="multiple" required>
-                                <option disabled >CHOOSE PRODUCT</option>
-                                @foreach ($products as $product)
-                                <option  value="{{ $product->id }}"  {{ (old('product') == $product->id) ? 'selected' : '' }}>
+    // function rowMachine(machine, process) {
+    //     return `<tr>
+    //                 <td>MACHINE 2</td>
+    //                 <td>
+    //                     <div class="form-group">
+    //                         <select placeholder="CHOOSE PRODUCT" class="form-control js-example-basic-multiple" name="product[${process.id}_${machine.id}][]"
+    //                             multiple="multiple" required>
+    //                             <option disabled >CHOOSE PRODUCT</option>
+    //                             @foreach ($products as $product)
+    //                             <option  value="{{ $product->id }}"  {{ (old('product') == $product->id) ? 'selected' : '' }}>
                                     
-                                    {{ $product->product_code }} | {{ $product->product_name }} | {{ $product->part_name }}</option>
-                                @endforeach
-                            </select>
+    //                                 {{ $product->product_code }} | {{ $product->product_name }} | {{ $product->part_name }}</option>
+    //                             @endforeach
+    //                         </select>
                              
-                        </div>
-                    </td>
-                </tr>`
-    }
+    //                     </div>
+    //                 </td>
+    //             </tr>`
+    // }
 
     // --- planning
     

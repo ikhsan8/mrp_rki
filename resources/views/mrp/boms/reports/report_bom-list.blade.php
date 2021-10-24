@@ -135,27 +135,41 @@
                     <div class="table-responsive" style="padding-bottom:10px;" id="style-1">
                         <table class="report table-bordered"
                             style="font-size: 11px; table-layout: auto !important;">
+                            <thead>
+                                <tr>
+                                    <th scope="col" >No</th>
+                                    <th scope="col">Bom Code</th>
+                                    <th scope="col">Bom Name</th>
+                                    <!-- <th scope="col">Part Name</th>
+                                    <th scope="col">Part Number</th> -->
+                                    <th scope="col">Material</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col" >Action</th>\
+                                </tr>
+                            </thead>
                             <tbody>
+                                <!-- @foreach ($boms as $bom) -->
                                 <tr>
-                                    <td width="100px" class="text-center" style="font-size:12px;font-weight: 800">Name</td>
-                                    <td width="100px" class="text-center" style="font-size:12px;font-weight: 800">Part No.</td>
-                                    <td width="100px" class="text-center" style="font-size:12px;font-weight: 800">Pieces/Box</td>
-                                    {!! $head_date !!}
-                                    
+                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <td>{{$bom->bom_code}}</td>
+                                    <td>{{$bom->bom_name}}</td>
+                                    <!-- <td>{{$bom->part_name}}</td>
+                                    <td>{{$bom->part_number}}</td> -->
+                                    @if (auth()->user()->can('bom-delete'))
+                                    <td>
+                                        <button onclick="detailMaterial({{$bom->id}})" class="btn btn-info btn-sm"><i class="ti-eye"></i> View Material </button>
+                                    </td>
+                                    @endif
+                                    <td>{{$bom->description}}</td>
+                                    <td>
+                                      
+                                    </td>
                                 </tr>
-                                {{-- {{ dd($column)}} --}}
-                                @foreach ($column as $data)
-                                <tr>
-                                    <td>{{$data['bom_name']}}</td>
-                                    <td>{{$data['part_number']}}</td>
-                                    {{-- <td>{{ $data['sum_value']['qty_material'] }}</td> --}}
-                                    {{-- <td>{{($data['price'] * $data['qty_material'])}}</td> --}}
-                                    {!! $body_date!!}  
+                                <!-- @endforeach -->
 
-                                </tr>
-                            @endforeach
-                            
+
                             </tbody>
+                           
                         </table>
 
                         
@@ -177,218 +191,7 @@
                         <div class="row">
                                 <div class="table-responsive" style="padding-bottom:10px;" id="style-1">
                                     <table class="report table-bordered" style="font-size: 11px;">
-                                        <tbody>
-                                            <tr>
-                                                <td width="100px" class="text-center" style="font-size:15px;font-weight: 800">Name</td>
-                                                <td width="100px" class="text-center" style="font-size:15px;font-weight: 800">Part No.</td>
-                                                <td width="100px" class="text-center" style="font-size:15px;font-weight: 800">Pieces/Box</td>
-                                                <td>21/1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <td>5</td>
-                                                <td>6</td>
-                                                <td>7</td>
-                                                <td>8</td>
-                                                <td>9</td>
-                                                <td>10</td>
-                                                <td>11</td>
-                                                <td>12</td>
-                                                <td>13</td>
-                                                <td>14</td>
-                                                <td>15</td>
-                                                <td>16</td>
-                                                <td>17</td>
-                                                <td>18</td>
-                                                <td>19</td>
-                                                <td>20</td>
-                                                <td>21</td>
-                                                <td>22</td>
-                                                <td>23</td>
-                                                <td>24</td>
-                                                <td>25</td>
-                                                <td>26</td>
-                                                <td>27</td>
-                                                <td>28</td>
-                                                <td>29</td>
-                                                <td>30</td>
-                                            </tr>
-                                            <tr>
-                                                <td>BODY</td>
-                                                <td>15708-75010-11id</td>
-                                                <td>1.500</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PULG</td>
-                                                <td>15798-36011id</td>
-                                                <td>10.000</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                            </tr>
-                                            <tr>
-                                                <td>SPRING</td>
-                                                <td>90501-75010id</td>
-                                                <td>5000</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PIPE</td>
-                                                <td>15708-75020-20id</td>
-                                                <td>1.500</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PLATE</td>
-                                                <td>13516-75040-36id</td>
-                                                <td>1.000</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                                <td>697.689</td>
-                                            </tr>
-                                        </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>

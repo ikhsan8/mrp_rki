@@ -78,67 +78,99 @@
     </style>
 
 
+<div class="row">
+        <div class="col-lg-6">
+            <div class="white_card mb_30 shadow pt-4">
+                <div class="white_card_body">
+                    <div class="QA_section">
+                        <div class="white_box_tittle list_header">
+                            <h4>Select Date </h4>
+                        </div>
+                        <div>
+                            <form action="{{ route('mrp.report_planning-test') }}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="form-group">
+                                            <label for="">Start Date</label>
+                                            <input type="text" class="datepicker-here form-control digits
+                                            @error('start_date') is-invalid @enderror" data-language="en" id="" name="start_date" autocomplete="off">
+                                            @error('start_date')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-group-lg">
+                                                <i class="fas fa-cog fa-lg"></i>
+                                                Generate
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {{-- <input autocomplete="off"
+                                    class="datepicker-here form-control digits @error('start_date') is-invalid @enderror"
+                                    type="text" data-language="en" data-min-view="months" data-view="months"
+                                    data-date-format="MM yyyy" name="start_date"> --}}
 
+                                    <div class="col-lg-2">
+                                        <br>
+                                        <span>To</span>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="form-group">
+                                            <label for="">End Date</label>
+                                            <input type="text" class="datepicker-here form-control digits
+                                            @error('end_date') is-invalid @enderror" data-language="en" id="" name="end_date" autocomplete="off">
+                                            @error('end_date')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    {{-- <input autocomplete="off"
+                                    class="datepicker-here form-control digits @error('end_date') is-invalid @enderror"
+                                    type="text" data-language="en" data-min-view="months" data-view="months"
+                                    data-date-format="MM yyyy" name="end_date"> --}}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-12">
             <div class="white_card mb_30 shadow pt-4">
                 <div class="white_card_body">
                     <div class="QA_section">
-                        {{-- <div class="white_box_tittle list_header">
-                            <h4>Date Picker Planning Production Export</h4>
-                        </div> --}}
-                        <div style="background: #ebebeb;padding:20px;border-radius:20px;margin-bottom:20px;">
-                        <form action="" class="row">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="">Select Month</label>
-                                    <input autocomplete="off"  class="form-control datepicker-here  digits @error('start_date') is-invalid @enderror"
-                                    type="text" data-language="en" data-min-view="months" data-view="months"
-                                    data-date-format="yyyy-mm" name="start_date">
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="">_</label>
-                                    <button class="btn btn-success form-control">SUBMIT</button>
-                                </div>
-                            </div>
-                        </form>
-                        </div>
                         <div class="table-responsice">
-                            <div>
-                                <table class="table report_planning">
-                                    <thead>
-                                        <tr>
-                                            <td>No</td>
-                                            <td>Date Start </td>
-                                            <td>Date Finish </td>
-                                            <td>Planning </td>
-                                            <td>Production</td>
-                                            <td>Action</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($productions as $production)
-                                            <tr>
-                                                <td>{{$loop->iteration}}</td>
-                                                <td>{{$production->date_start}}</td>
-                                                <td>{{$production->date_finish}}</td>
-                                                <td>{{$production->planning->plan_code}} | {{$production->planning->plan_name}}</td>
-                                                <td>{{$production->production_code}} | {{$production->production_name}}</td>
-                                                <td>
-                                                    <a href="{{route('mrp.report_planning-detail',$production->id)}}">View Detail Report</a>
-                                                </td>
-                                            </tr>
-                                            
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-
+                            <table class="table report_material">
+                                <thead>
+                                    <tr>
+                                        <td scope="col">No</td>
+                                        <td scope="col">Date</td>
+                                        <td scope="col">Planning Name</td>
+                                        <td scope="col">Product name </td>
+                                        <td scope="col">Part Number </td>
+                                        <td scope="col">Shift</td>
+                                        <td scope="col">Quantity Planning </td>
+                                    </tr> 
+                                </thead>
+                                <tbody>
+                                    @foreach ($planning as $key => $plannings)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $plannings->planningProduction->date }}</td>
+                                        <td>{{ $plannings->planningProduction->plan_name }}</td>
+                                        <td>{{ $plannings->product->part_name  ?? 'N/A'}}</td>
+                                        <td>{{ $plannings->product->part_number  ?? 'N/A'}}</td>
+                                        <td>{{ $plannings->planningProduction->shift->shift_name ?? 'N/A' }}</td>
+                                        <td>{{ $plannings->quantit ?? 'N/A' }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -159,38 +191,46 @@
 @endpush
 @push('js')
 
-    <script src="{{ asset('assets') }}/vendors/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('assets') }}/vendors/datatable/js/dataTables.responsive.min.js"></script>
-    <script src="{{ asset('assets') }}/vendors/datatable/js/dataTables.buttons.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/dataTables.responsive.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/dataTables.buttons.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/dataTables.buttons.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/buttons.flash.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/jszip.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/pdfmake.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/vfs_fonts.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/buttons.html5.min.js"></script>
+<script src="{{asset('assets')}}/vendors/datatable/js/buttons.print.min.js"></script>
 
-    <script src="{{ asset('assets') }}/vendors/datepicker/datepicker.js"></script>
+<script src="{{ asset('assets') }}/vendors/datepicker/datepicker.js"></script>
     <script src="{{ asset('assets') }}/vendors/datepicker/datepicker.en.js"></script>
     <script src="{{ asset('assets') }}/vendors/datepicker/datepicker.custom.js"></script>
 
 
     <script>
-        $(".report_planning").DataTable({});
-        if ($('.lms_table_active3').length) {
-            $('.lms_table_active3').DataTable({
-                bLengthChange: false,
-                "bDestroy": false,
-                language: {
-                    search: "<i class='ti-search'></i>",
-                    searchPlaceholder: 'Quick Search',
-                    paginate: {
-                        next: "<i class='ti-arrow-right'></i>",
-                        previous: "<i class='ti-arrow-left'></i>"
-                    }
-                },
-                columnDefs: [{
-                    visible: false
-                }],
-                responsive: true,
-                searching: true,
-                info: true,
-                paging: true
-            });
-        }
+        if ($('.report_material').length) {
+        $('.report_material').DataTable({
+            bLengthChange: false,
+            "bDestroy": false,
+            language: {
+                search: "<i class='ti-search'></i>",
+                searchPlaceholder: 'Quick Search',
+                paginate: {
+                    next: "<i class='ti-arrow-right'></i>",
+                    previous: "<i class='ti-arrow-left'></i>"
+                }
+            },
+            columnDefs: [{
+                visible: false
+            }],
+            responsive: true,
+            searching: true,
+            info: true,
+            paging: true,
+            dom: 'Bfrtip',
+            buttons: ['csv', 'excel', 'pdf']
+        });
+    }
 
         var urlDelete = `{{ route('mrp.product-delete') }}`
 
